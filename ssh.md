@@ -1,2 +1,8 @@
 ## Generate ssh key
-ssh-keygen -b 4096 -f ${name_key} -t rsa -C "${email}"
+ssh-keygen -b 2048 -f ${name_key} -t rsa -C "${email}"
+
+## Config
+Host ${name}
+  HostName ${hostname}
+  User ${user}
+  IdentityFile ${file.key}
