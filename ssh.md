@@ -6,3 +6,6 @@ Host ${name}
   HostName ${hostname}
   User ${user}
   IdentityFile ${file.key}
+
+## copy key on remote serve
+ssh-copy-id -i ${file} ${user}@${host}
