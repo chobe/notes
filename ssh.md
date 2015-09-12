@@ -2,7 +2,7 @@
 ssh-keygen -b 4096 -f ${name_key} -t rsa -C "${email}"
 
 ## add key to ssh-agent
-eval "$(ssh-agent -s)" 
+eval "$(ssh-agent -s)"  
 ssh-add ${path_key} 
 
 ## Config
