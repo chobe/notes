@@ -1,5 +1,5 @@
 ## Generate ssh key
-ssh-keygen -b 4096 -f ${name_key} -t rsa -C "${email}"
+ssh-keygen -b 4096 -f ${name_key} -t rsa -C "${email}"  
 
 ## add key to ssh-agent
 eval "$(ssh-agent -s)" 
