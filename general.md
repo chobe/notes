@@ -1,2 +1,2 @@
 ## copy to clip
-${out} | xclip -selection c
+${out} | xclip -selection c 
