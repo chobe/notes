@@ -9,3 +9,8 @@ https://github.com/websnarf/bstrlib
 
 ## Install Autotools
 aptitude install build-essential g++ automake autoconf gnu-standards autoconf-doc libtool gettext autoconf-archive
+
+## Autoconf
+autoscan
+mv configure.scan configure.ac
+autoconf
