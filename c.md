@@ -40,3 +40,7 @@ aptitude install build-essential g++ automake autoconf gnu-standards autoconf-do
 9. Run "aclocal".  
 10. Run "autoconf".  
 11. Configure, make, and run!  
+
+
+
+AM_INIT_AUTOMAKE([-Wportability])
