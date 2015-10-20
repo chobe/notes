@@ -1,0 +1,77 @@
+#!/bin/sh
+#eth0 es la interfaz de cara a internet
+EXTIF="eth0"
+
+EXTIP="190.26.2.2" 
+
+#eth1 es la interfaz de cara a la LAN
+INTIF="eth2"
+INTNET="172.21.10/24"
+INTIP="172.21.10.1"
+
+OPENINPUTTCPPORTS="22,80,443,8080,10022,8280"
+OPENINPUTUDPPORTS="time,53"; # Puertos UDP para abrir
+
+# Set the default policies:
+
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+
+# Flush chains:
+
+iptables -F
+iptables -t nat -F
+iptables -X
+
+# Create a new chain to use for both the input and the forward chains:
+iptables -N block
+
+# Accept all packages for existing connections
+iptables -A block -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allow all packets from internal networks
+#
+# In this example, 192.168.0.0/24 is the internal network and $INTIF its
+# corresponding interface.  You could add multiple similar lines if you
+# have many "internal" networks.
+
+iptables -A block -i lo -j ACCEPT
+iptables -A block -i $INTIF --destination $INTIP -j ACCEPT
+
+# Allow new connections for a few "safe" ports
+# Para quitar entrada desde afuera comantar las dos siguientes lineas
+iptables -A block -m multiport -p tcp --dports $OPENINPUTTCPPORTS -j ACCEPT
+iptables -A block -m multiport -p udp --dports $OPENINPUTUDPPORTS -j ACCEPT
+
+
+# Allow external ping
+#iptables -A block -p icmp --icmp-type 0 -j ACCEPT
+#iptables -A block -p icmp --icmp-type 8 -j ACCEPT
+
+# Log unwanted packages.  Since this can generate quite a lot of
+# output, it is disabled by default.
+
+iptables -A block -j LOG
+
+# Reject everything else
+iptables -A block -j REJECT
+
+# Add the block chain to both the INPUT and OUTPUT chains:
+iptables -A INPUT   -j block
+iptables -A FORWARD -j block
+
+# Allow output of local packets; use one of the following rules for all your
+# network addresses.  Note that if at least one of your interfaces uses a
+# dynamically assigned address, you might want to drop the --source parameter
+# (or, if you know the network, specify the network rather than the IP
+# address (as in 192.168.0.0/24)).
+
+iptables -A OUTPUT -o $INTIF --source $INTIP -j ACCEPT
+
+# Permitir toda la salida
+iptables -A OUTPUT -o $EXTIF --source $EXTIP -j ACCEPT
+
+# Allow output of any packets on the loopback interface:
+iptables -A OUTPUT -o lo -j ACCEPT
+
