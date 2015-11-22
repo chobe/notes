@@ -6,7 +6,7 @@ https://sendgrid.com/
 https://mandrillapp.com  
 
 ## dns
-http://www.solvedns.com/
+http://www.solvedns.com/  
 http://dyn.com/dns/  
 http://www.noip.com/  
 https://www.opendns.com/  
