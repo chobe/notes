@@ -1,9 +1,9 @@
-# Grub menu booting 103 systems out of 144 partitions  
+## Grub menu booting 103 systems out of 144 partitions  
 color          white/blue black/light-gray  
 default        0  
 timeout        1000  
 
-# Disk hda has 60 partitions fully populated 56 are bootable systems  
+## Disk hda has 60 partitions fully populated 56 are bootable systems  
 
 
 title          DOS 6.22 @ hda1  
@@ -11,7 +11,7 @@ unhide         (hd0,0)
 root           (hd0,0)  
 chainloader    +1  
 	
-#  hda2 is the extended partition  and has no storage space itself  
+## hda2 is the extended partition  and has no storage space itself  
 
 title          Empty @ hda3 #initially used by a BSD system moved to another disk  
 root           (hd0,2)  
@@ -22,7 +22,7 @@ title          Empty @ hda4#initially used by a BSD system moved to another disk
 root           (hd0,3)  
 chainloader    +1  
 
-# hda5 is a swap partition common to all Linux in the box  
+## hda5 is a swap partition common to all Linux in the box  
 
 title          Puppy 1.0.6 @ hda6  
 root           (hd0,5)  
@@ -134,7 +134,7 @@ title          PCLinuxOS 9.1 @ hda32
 root           (hd0,31)
 chainloader    +1
 
-#  Here is the approximate 137Gb barrier in the hard disk hda
+## Here is the approximate 137Gb barrier in the hard disk hda
 
 title          Asian Linux  @ hda33
 root           (hd0,32)
@@ -277,7 +277,7 @@ kernel         /boot/vmlinuz-2.6.9-5.0.5.EL rw root=/dev/hda60 rhgb quiet
 initrd         /boot/initrd-2.6.9-5.0.5.EL.img
                                       
 
-# Disk hdc has 54 partitions with 30 systems
+##Disk hdc has 54 partitions with 30 systems
 
 title          Dos 7.10 @ hdc1
 hide           (hd0,0)
@@ -302,7 +302,7 @@ title          Empty @ hdc3
 root           (hd1,2)
 chainloader    +1
 
-# Extended partition is hdc4
+##Extended partition is hdc4
 
 title          B2D Pure KDE 2005 @ hdc5
 root           (hd1,4)
@@ -394,7 +394,7 @@ title          Empty @ hdc26
 root           (hd1,25)
 chainloader    +1
 
-# here is the approximate boundary of the 137Gb barrier of hdc
+##here is the approximate boundary of the 137Gb barrier of hdc
 
 title          Empty @ hdc27
 root           (hd1,26)
@@ -451,7 +451,7 @@ root           (hd1,38)
 kernel         (hd0,42)/boot/vmlinuz ro root=/dev/hdc39
 initrd         (hd0,42)/boot/initrd
 
-# Partitions hdc40 to hdc54 are partitions each 200Mb for Grub working as submenus.
+##Partitions hdc40 to hdc54 are partitions each 200Mb for Grub working as submenus.
 
 title          Grub menu for MS systems only (Dos & Windows) @ hdc40
 root           (hd1,26)
@@ -514,7 +514,7 @@ title          Grub reserved menu (Empty) @ hdc54
 root           (hd1,53)
 chainloader    +1
 
-# Third disk sda is a Sata with 15 partitions, 9 are bootable
+##Third disk sda is a Sata with 15 partitions, 9 are bootable
 
 title          XP pro @ sdb1
 hide           (hd0,0)
@@ -535,7 +535,7 @@ title          Empty @ sda3
 root           (hd2,2)
 chainloader    +1
 
-# Extended partition here is the sdb4
+##Extended partition here is the sdb4
 
 title          Empty @ sda5
 root           (hd2,4)
@@ -573,21 +573,21 @@ title          Mepis 3.3.2 @ sda13
 root           (hd2,12)
 chainloader    +1
 
-# Persinal data partion @ sda14
+##Persinal data partion @ sda14
 
 
 title          Empty @ sda15
 root           (hd2,14)
 chainloader    +1
 
-# Fourth disk sdb is a Sata with 15 partitions, 8 are bootable
+##Fourth disk sdb is a Sata with 15 partitions, 8 are bootable
 
 title          Win2k @ sdb1
-hide           (hd0,0)   # hiding DOS 6.22 partition in hda1
-hide           (hd1,0)   # hiding DOS 7.10 partition in hdc1
-hide           (hd1,1)   # hiding Win98    partition in hdc2
-hide           (hd2,0)   # hiding Win XP   partition in sda1
-unhide         (hd3,0) # unhide Win2k partition for execution
+hide           (hd0,0)   ##hiding DOS 6.22 partition in hda1
+hide           (hd1,0)   ##hiding DOS 7.10 partition in hdc1
+hide           (hd1,1)   ##hiding Win98    partition in hdc2
+hide           (hd2,0)   ##hiding Win XP   partition in sda1
+unhide         (hd3,0) ##unhide Win2k partition for execution
 root           (hd3,0)
 makeactive
 map            (hd3) (hd0)
@@ -595,11 +595,11 @@ map            (hd0) (hd3)
 chainloader    +1
 
 title          FreeDOS @ sdb2
-hide           (hd0,0)   # hiding DOS 6.22 partition in hda1
-hide           (hd1,0)   # hiding DOS 7.10 partition in hdc1
-hide           (hd1,1)   # hiding Win98    partition in hdc2
-hide           (hd2,0)   # hiding Win XP   partition in sda1
-hide           (hd3,0)   # hiding Win2k    partition in sdb1
+hide           (hd0,0)   ##hiding DOS 6.22 partition in hda1
+hide           (hd1,0)   ##hiding DOS 7.10 partition in hdc1
+hide           (hd1,1)   ##hiding Win98    partition in hdc2
+hide           (hd2,0)   ##hiding Win XP   partition in sda1
+hide           (hd3,0)   ##hiding Win2k    partition in sdb1
 unhide         (hd3,1)
 root           (hd3,1)
 makeactive
@@ -611,7 +611,7 @@ title          Empty @ sdb3
 root           (hd3,4)
 chainloader    +1
 
-# Partition sdb4 is an extended partition
+##Partition sdb4 is an extended partition
 
 title          NetBSD 3.0 AMD64 @ sdb5
 root           (hd3,4)
