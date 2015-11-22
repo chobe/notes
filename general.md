@@ -6,3 +6,6 @@ ${out} | xclip -selection c
 
 ##  Framework Benchmarks
 http://www.techempower.com/benchmarks/  
+
+## locate binary
+which ${program}  
