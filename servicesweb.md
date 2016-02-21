@@ -17,3 +17,6 @@ https://randomuser.me/
 
 ## check ssl  
 https://www.ssllabs.com/ssltest/  
+
+## ssl free
+https://letsencrypt.org/
