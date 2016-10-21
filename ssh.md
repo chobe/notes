@@ -1,3 +1,5 @@
+http://www.zev23.com/2014/03/ssh-generate-public-and-private-keys.html
+
 ## Generate ssh key
 ssh-keygen -b 4096 -f ${name_key} -t rsa -C "${email}"  
 
